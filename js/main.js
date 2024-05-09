@@ -7,13 +7,15 @@ function calcolaPrezzo() {
 
   
   const prezzoBase = km * 0.21;
+  const scontoUnder = 20;
+  const scontoOver = 40;
 
   // Sconti
   let prezzoFinale;
   if (eta < 18) {
-    prezzoFinale = (prezzoBase * Math.floor((1 - 0.2) * 100)) / 100; // Sconto del 20%
+    prezzoFinale = prezzoBase - (prezzoBase * scontoUnder) / 100; // Sconto del 20%
   } else if (eta > 65) {
-    prezzoFinale = (prezzoBase * Math.floor((1 - 0.4) * 100)) / 100; // Sconto del 40%
+    prezzoFinale = prezzoBase - (prezzoBase * scontoOver) / 100; // Sconto del 40%
   } else {
     prezzoFinale = prezzoBase;
   }
